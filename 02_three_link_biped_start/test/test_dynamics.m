@@ -3,6 +3,9 @@
 % C, G is correct. If your cacluations are
 % correct you should get zero error for M, C, G. Again, this is not a 100% 
 % check.
+clear all 
+
+
 q_test = [0.9134    0.6324    0.0975];
 dq_test = [0.2785    0.5469    0.9575];
 
