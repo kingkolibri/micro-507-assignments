@@ -1,6 +1,6 @@
 function A_m = eval_A_m(q_m)
 
-    [m, ~, ~, l1, l2, l3, ~] = set_param();
+    [m, ~, ~, l1, l2, l3, ~] = set_parameters();
 
     q1_m = q_m(1);
     q2_m = q_m(2);

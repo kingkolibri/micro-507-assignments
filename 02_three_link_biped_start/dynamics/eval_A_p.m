@@ -1,5 +1,5 @@
 function A_p = eval_A_p(q_p)
-    [m, ~, ~, l1, l2, l3, ~] = set_param();
+    [m, ~, ~, l1, l2, l3, ~] = set_parameters();
     
     q1_p = q_p(1);
     q2_p = q_p(2);
