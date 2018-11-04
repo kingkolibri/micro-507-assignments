@@ -49,10 +49,32 @@ for alpha = alphas
     
 end
 
-figure;
+figure1 = figure;
+
+% Create axes
+axes1 = axes('Parent',figure1);
+hold(axes1,'on');
+
 plot(alphas, losses)
-title('Kinetic losses during stance phase over impact angle $\alpha$', 'Interpreter','latex')
-xlabel('$\alpha$ [rad]', 'Interpreter','latex')
-xticks([0, pi/16, pi/8, 3*pi/16, pi/4])
-xticklabels({'0','\pi/16','\pi/8','3\pi/16','\pi/4'})
-ylabel('Loss [\% of kinetic energy before impact]', 'Interpreter','latex')
+
+% Create ylabel
+ylabel('Loss [\% of kinetic energy before impact]','FontName','FreeSerif',...
+    'Interpreter','latex');
+
+% Create xlabel
+xlabel('$\alpha$ [rad]','FontName','FreeSerif','Interpreter','latex');
+
+% Create title
+title('Kinetic losses during stance phase over impact angle $\alpha$',...
+    'FontWeight','bold',...
+    'FontSize',14,...
+    'FontName','Arial Narrow',...
+    'Interpreter','latex');
+
+box(axes1,'on');
+% Set the remaining axes properties
+set(axes1,'FontName','FreeSerif','XGrid','on','XTick',...
+    [0 0.196349540849362 0.392699081698724 0.589048622548086 0.785398163397448],...
+    'XTickLabel',{'0','\pi/16','\pi/8','3\pi/16','\pi/4'},'YGrid','on');
+
+saveas(gcf,'KineticEnergyLoss.png')
