@@ -1,0 +1,10 @@
+The steps for running this project:
+Step 1(important):
+Add this full folder '02_three_biped_start' into the path.
+Step 2:
+If you want test dynamic you can just run 'test_dynamics' in folder 'test'.
+And if you want see the detail you can run 'generate_kinematics' first and then run 'generate_dynamics', you can see the result and build eval_C_tmp,eval_B_tmp,eval_G_tmp,eval_M_tmp,eval_energy_tmp in folder 'dynamics' which you can use to renew the equation in eval_C,eval_B,eval_G,eval_M,eval_energy
+Beside you can also run 'visualize' in folder 'visualize' to check the model.
+Step 3:
+If you want test impact, you can run 'generate_impact_map' in 'generate_model' folder first, and then it will build 'Am_tmp' and 'Ap_tmp' in folder 'dynamics', you can use them to renew the equation in 'eval_A_m' and 'eval_A_p'.
+Then if you want to test the impact and find kinetic energy lost due to impact and impact mapping you can directly run 'test_impact_map' in 'test' folder.

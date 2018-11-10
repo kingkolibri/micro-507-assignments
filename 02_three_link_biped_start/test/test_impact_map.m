@@ -3,8 +3,8 @@ clf
 close all
 
 %% 
-q_m = [pi/6; -pi/6; pi/10];
-dq_m = [1; 0.2; 0];
+q_m = [pi/6, -pi/6, pi/10];
+dq_m = [1, 0.2, 0];
 
 disp('Energy before impact')
 
@@ -18,17 +18,16 @@ disp('Energy after impact')
 
 [T_after, V_after] = eval_energy(q_p, dq_p)
 
-disp(['Kinetic energy lost due to impact: ' , num2str(T_after / (T_before/100) ), ' %'])
+disp(['Kinetic energy lost due to impact: ' , num2str((1 - T_after/T_before)*100), ' %'])
 
 %% Kinematic energy loss over impact angle
-dq_m = [1; 0.2; 0];
+dq_m = [1,0.2,0];
 
 alphas = linspace(0, pi/4, 1000);
 
 for alpha = alphas
         
-    q_m = [alpha; -alpha; 0];
-    dq_m = [1; 0.2; 0];
+    q_m = [alpha, -alpha, 0];
 
     %'Energy before impact'
     [T_before, V_before] = eval_energy(q_m, dq_m);
@@ -38,8 +37,7 @@ for alpha = alphas
 
      % 'Energy after impact'
     [T_after, V_after] = eval_energy(q_p, dq_p);
-    
-    loss = T_after/(T_before/100);
+    loss = (1 - T_after/T_before)*100;
     
     if exist('losses', 'var')
         losses = [losses, loss];
