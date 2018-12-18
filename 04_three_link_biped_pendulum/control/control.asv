@@ -1,0 +1,22 @@
+function u = control(t, q, dq, q0, dq0, step_number)
+% You may call control_hyper_parameters and desired_outputs in this
+% function
+% you don't necessarily need to use all the inputs to this control function
+[kd,kp,kd2,kp2] = control_hyper_parameters(step_number);
+%[hd, dhd] = desired_outputs(s, ds, q0, dq0, step_number);
+%M = eval_M(q);
+%G = eval_G(q);
+%C = eval_C(q, dq);
+%B = eval_B();
+%P=inv(M)*B;
+%Q=inv(M)*(C*dq-G);
+theta_c=-pi/16;
+torse=pi/32;
+u1=-kd*(wrapToPi(q(3))-torse)-kp*dq(3);
+u2=-kd2*(wrapToPi(q(2))-theta_c)-kp2*dq(2);
+%u2=(-kd2*dq(2)-kp2*q(2)+kp2*theta_c+Q(2))-(-kd2*dq(3)-kp2*q(3)+Q(3))/(P(2,2)*P(3,1)-P(3,2)*P(2,1));
+%u20 =(-kd2*dq0(2)-kp2*q0(2)+kp2*theta_c+Q(2))-(-kd2*dq0(3)-kp2*q0(3)+Q(3))/(P(2,2)*P(3,1)-P(3,2)*P(2,1));
+%u1=((-kd*dq(3)-kp*q(3)+Q(3))-P(3,2)*u2)/P(3,1);
+%u1=((-kd*dq(3)-kp*q(3)+Q(3))-P(3,2)*(-kd2*dq0(2)-kp2*q0(2)+kp2*theta_c+Q(2))-(-kd2*dq0(3)-kp2*q0(3)+Q(3))/(P(2,2)*P(3,1)-P(3,2)*P(2,1)))/P(3,1);
+u=[u1;u2];
+end
