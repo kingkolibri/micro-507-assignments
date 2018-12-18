@@ -2,27 +2,25 @@
 % methods, then you may cosider using a function such as this. 
 function [hd, dhd] = desired_outputs(s, ds, q0, dq0, delta_t, t0)
 
+    % desired gait hyperparameters
+    global gDesiredVelocity
+    desired = gait_hyper_parameters(gDesiredVelocity);
+
     global gReference_curve
     reference_curve = gReference_curve;
     reference_curve_lenght = length(reference_curve);
 
-    % Desired values
-    T = 0.4;                % swing period
-    theta_swing = -pi/16;   % end pitch angle of swing leg
-    torso = pi/32;          % torso angle
-       
     % Build desired angles vectors
-    hd = [s(1); theta_swing; torso];
-    
+    hd = [s(1); desired.theta_swing; desired.torso];
     
     if t0 == 0
         % at beginning use large value to get robot walking 
-        hd(2) = theta_swing;
+        hd(2) = desired.theta_swing;
     else
         % after first step guide walking along reference curve
-        index = length(reference_curve)*((delta_t-t0)/T)  +1;
+        index = length(reference_curve)*((delta_t-t0)/desired.T)  +1;
         index = min(floor(index), reference_curve_lenght);
-        hd(2) = -theta_swing*reference_curve(index);
+        hd(2) = -desired.theta_swing*reference_curve(index);
     end
     
     dhd = zeros(3,1);

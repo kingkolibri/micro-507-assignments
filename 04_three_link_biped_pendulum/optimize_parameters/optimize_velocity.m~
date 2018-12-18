@@ -1,17 +1,20 @@
-% Demo skript for project
+%% Script to optimize control parameters
 
 close all;
 clc;
 
 set_path();
 
-save_results = 1;
+% Initial parameter
 
-% Initial values
-q0=[0;0;0]; 
-dq0=[0;0;0]; %inital q0 and dq0 value
-num_steps=15; %inital num_steps value
-desired_velocity = 0.5;
+
+
+T0 = 0.4;
+theta_swing0 = -pi/32;
+theta_torso0 = pi/32;
+
+%
+x0 = [T0, theta_swing0, theta_torso0];
 
 % Set control parameters (global visibility only necessary for optimization)
 global gKd1
@@ -30,13 +33,14 @@ reference_curve = load('./control/reference_curve.mat');
 gReference_curve = reference_curve.curve;
 gDesiredVelocity = desired_velocity;
 
-% Start solver
-sln = solve_eqns(q0, dq0, num_steps);
 
-% Visualize simulation
-animate(sln);
-analyze(sln);
 
-if save_results
-    
-end
+% Set function handler to be optimized
+fun = @(x) cost_function_control(x(1), x(2), x(3));
+
+% Run optimizer
+options = optimset('PlotFcns',@optimplotfval);
+
+x = fminsearch( fun,...
+                x0,...
+                options)

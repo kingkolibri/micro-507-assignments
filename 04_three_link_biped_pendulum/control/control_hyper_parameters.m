@@ -12,9 +12,4 @@ function [Kd1, Kp1, Kd2, Kp2] = control_hyper_parameters(step_number)
     Kd2 = gKd2;
     Kp2 = gKp2;
     
-% kd=500; %0.01
-% kp=1;%0.1
-% 
-% kd2=3; %0.01
-% kp2=30;%0.1d
 end

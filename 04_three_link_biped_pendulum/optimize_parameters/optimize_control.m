@@ -1,10 +1,15 @@
 %% Script to optimize control parameters
 
+close all;
+clc;
+
+set_path();
+
 % Initial parameter
-gKd1 = 269.6263;
-gKp1 = 2.4294;
-gKd2 = -0.0547;
-gKp2 = 24.3599;
+gKd1 = 664.3467;
+gKp1 = 3.7122;
+gKd2 = 5.007;
+gKp2 = 149.2581;
 
 x0 = [gKd1, gKp1, gKd2, gKp2];
 
