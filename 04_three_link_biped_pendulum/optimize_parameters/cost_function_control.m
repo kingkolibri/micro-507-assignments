@@ -16,10 +16,13 @@ function [J] = cost_function_control(Kd1, Kp1, Kd2, Kp2)
     reference_curve = load('./control/reference_curve.mat');
     gReference_curve = reference_curve.curve;
     
+    global gDesiredVelocity
+    gDesiredVelocity = 0.5;
+    
     %% Run simulation
     q0 = [0;0;0]; 
     dq0 = [0;0;0]; %inital q0 and dq0 value
-    num_steps = 15; %inital num_steps value
+    num_steps = 5; %inital num_steps value
     
     sln = solve_eqns(q0, dq0, num_steps);
     
@@ -52,7 +55,7 @@ function [J] = cost_function_control(Kd1, Kp1, Kd2, Kp2)
                                             time(n), time(1));
 
             % Control error (L2 norm to discourage large abbreviations)
-            J = J + abs(q(3) - do(3)); %(q(2) - do(2))^2
+            J = J + abs(q(3) - do(3)) + (q(2) - do(2))^2;
 
             % Controller outputs (not used yet)
             % u = control(T(i), q, dq, do(1:3), do(4:6), j); 

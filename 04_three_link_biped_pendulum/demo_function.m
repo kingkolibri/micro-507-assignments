@@ -5,7 +5,7 @@ clc;
 
 set_path();
 
-save_results = 1;
+save_results = 0;
 
 % Initial values
 q0=[0;0;0]; 
@@ -38,5 +38,5 @@ animate(sln);
 analyze(sln);
 
 if save_results
-    
+    save('results_' + 'v' + num2str(desired_velocity) +'.mat', 'sln')
 end

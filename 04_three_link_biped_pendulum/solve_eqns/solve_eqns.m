@@ -8,7 +8,7 @@
 
 function sln = solve_eqns(q0, dq0, num_steps)
 
-    options = odeset('RelTol',1e-5, 'Events', @event_func);
+    options = odeset('RelTol', 1e-5, 'Events', @event_func);
     h = 0.001; % time step
     tmax = 2; % max time that we allow for a single step
     tspan = 0:h:tmax;
@@ -33,6 +33,8 @@ function sln = solve_eqns(q0, dq0, num_steps)
             break
         end
 
+        % animate(sln)
+        
         % Impact map
         q_m = YE(1:3)';
         dq_m = YE(4:6)';

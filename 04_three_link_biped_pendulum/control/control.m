@@ -10,7 +10,7 @@ function u = control(t, q, dq, q0, dq0, t0)
 
 % Compute control outputs
 u1 = Kp1*(wrapToPi(q(3))-hd(3)) + Kd1*dq(3); % torso control
-u2 =-Kp2*(wrapToPi(q(2))-hd(2)) - Kd2*dq(2); % swing leg control
+u2 = -Kp2*(wrapToPi(q(2))-hd(2)) - Kd2*dq(2); % swing leg control
 
 u=[u1;u2];
 
