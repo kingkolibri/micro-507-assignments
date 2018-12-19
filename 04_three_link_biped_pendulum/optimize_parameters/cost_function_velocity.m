@@ -44,7 +44,7 @@ function [J] = cost_function_velocity(T, theta_swing, theta_torso)
     end
 
     % normalize by time to discourage immedeate falls, standing
-    J =  abs( (r0(1)/T(end)) - gDesiredVelocity);
+    J =  abs( (r0(1)/T(end)) - gDesiredVelocity) + gDesiredVelocity*6-r0(1);
 
 end
 

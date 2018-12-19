@@ -21,8 +21,8 @@ global gKp2
 global gReference_curve
 global gDesiredVelocity
 
-gKd1 = 73.4387;
-gKp1 = 4046.276483264287;
+gKd1 = 159.8387;
+gKp1 = 1519.776483264287;
 gKd2 = 0;
 gKp2 = 0;
 

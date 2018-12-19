@@ -4,20 +4,17 @@ function [desired] = gait_hyper_parameters(desired_velocity)
 
     desired = {};
     
-    
-    
-
     if desired_velocity < 0.0
         % Desired values
         desired.T = 0.4;                % swing period
         desired.theta_swing = -pi/16;   % end pitch angle of swing leg
         desired.torso = pi/32;          % torso angle
-%     elseif (0.5 < desired_velocity) &&  (desired_velocity <= 0.7)
-%         % Desired values
-%         desired.T = 0.4;                % swing period
-%         desired.theta_swing = -pi/16;   % end pitch angle of swing leg
-%         desired.torso = pi/20;          % torso angle
-%     elseif (0.7 < desired_velocity) &&  (desired_velocity <= 0.9)
+    elseif (0.5 < desired_velocity) &&  (desired_velocity <= 0.7)
+        % Desired values
+        desired.T = 0.4;                % swing period
+        desired.theta_swing = -pi/16;   % end pitch angle of swing leg
+        desired.torso = pi/20;          % torso angle
+    elseif (0.7 < desired_velocity) &&  (desired_velocity <= 0.9)
 %         % Desired values
 %         desired.T = 0.4;                % swing period
 %         desired.theta_swing = -pi/16;   % end pitch angle of swing leg
