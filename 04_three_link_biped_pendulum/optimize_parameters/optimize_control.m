@@ -6,10 +6,10 @@ clc;
 set_path();
 
 % Initial parameter
-gKd1 = 58.4387 + rand(1)*100;
-gKp1 = 500.276483264287 + rand(1)*1000;
-gKd2 = 0;
-gKp2 = 0;
+gKd1 = 514.8;
+gKp1 = 1.1;
+gKd2 = 34.8;
+gKp2 = 2.3;
 
 x0 = [gKd1, gKp1, gKd2, gKp2];
 

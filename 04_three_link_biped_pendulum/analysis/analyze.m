@@ -141,6 +141,9 @@ figure('name', 'Horizontal hip position')
             xlabel('Time [s]')
             ylabel('x position [m]')
 % Plot CoT
-[cot]=COT(num_steps,DQ(:,1),DQ(:,2),DQ(:,3),U(:,1),U(:,2),x_swf_total,Hip(:,1));
+ cot = COT( num_steps,...
+            DQ(1,:), DQ(2,:), DQ(3,:),...
+            U(:,1), U(:,2),...
+            x_swf_total, Hip(:,1));
 	    
 end

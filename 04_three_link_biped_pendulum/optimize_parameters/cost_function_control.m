@@ -16,13 +16,9 @@ function [J] = cost_function_control(Kd1, Kp1, Kd2, Kp2)
     global gTheta_swing
     global gTheta_torso
 
-    gT = 0.4;
+    gT = 0.5;
     gTheta_swing = -pi/16;
     gTheta_torso = pi/64;
-    
-    global gReference_curve
-    reference_curve = load('./control/reference_curve.mat');
-    gReference_curve = reference_curve.curve;
     
     global gDesiredVelocity
     gDesiredVelocity = 0.5;
