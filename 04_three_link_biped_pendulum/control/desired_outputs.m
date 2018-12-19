@@ -3,8 +3,8 @@
 function [hd, dhd] = desired_outputs(s, ds, q0, dq0, delta_t, t0)
 
     % desired gait hyperparameters
-%     global gDesiredVelocity
-%     desired = gait_hyper_parameters(gDesiredVelocity);
+    global gDesiredVelocity
+    desired = gait_hyper_parameters(gDesiredVelocity);
 
 
     global gReference_curve
