@@ -3,8 +3,9 @@
 function [hd, dhd] = desired_outputs(s, ds, q0, dq0, delta_t, t0)
 
     % desired gait hyperparameters
-    global gDesiredVelocity
-    desired = gait_hyper_parameters(gDesiredVelocity);
+%     global gDesiredVelocity
+%     desired = gait_hyper_parameters(gDesiredVelocity);
+
 
     global gReference_curve
     reference_curve = gReference_curve;
@@ -29,7 +30,7 @@ function [hd, dhd] = desired_outputs(s, ds, q0, dq0, delta_t, t0)
     % Fall protection:
    if(s(1)*s(2) > 0)&&(abs(s(1))>0.2)
        % both legs are on same side of torso, enforce stable stand
-       hd(2) = -s(2);
+       % hd(2) = -s(2);
        % actually makes no sense here , because when swing leg is at same
        % position as stance leg, the event func will trigger stance phases
        % until the simulation ends.

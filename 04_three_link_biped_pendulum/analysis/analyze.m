@@ -17,30 +17,30 @@ for j = 1:num_steps
     
     for n = 1:N
         
-        q = Y(n, 1:3);
-        dq = Y(n, 4:6);
+        q = Y(n, 1:3)';
+        dq = Y(n, 4:6)';
         
         T = cat(1, T, time(n));
-        Q = cat(1, Q, q);
-        DQ= cat(1, DQ, dq);
+        Q = cat(2, Q, q);
+        DQ= cat(2, DQ, dq);
         
         i = i+1;
         
         % Desired outputs
-        [Do(i, 1:3), Do(i, 4:6)]  = desired_outputs(q, dq,...
+        [Do(1:3,i), Do(4:6,i)]  = desired_outputs(q, dq,...
                                                     0, 0,...
                                                     T(i), time(1));
                                                    
         % Control error (L2 norm to discourage large abbreviations)
-        control_error = control_error + (q(2) - Do(i,2))^2 ...
-                                      + (q(3) - Do(i,3))^2;
+        control_error = control_error + (q(2) - Do(2,i))^2 ...
+                                      + (q(3) - Do(3,i))^2;
         
         % Hip position
         [Hip(i,1), Hip(i,2), ~, ~] = kin_hip(q);        
         Hip(i,1) = Hip(i,1) + r0(1);
         
         % Controller outputs
-        U(i,:) = control(i, q, dq, Do(i,1:3), Do(i,4:6), i); 
+        U(i,:) = control(i, q, dq, Do(1:3,i), Do(4:6,i), i); 
         
     end
     [x_swf, ~, ~, ~] = kin_swf(q);
@@ -65,19 +65,19 @@ end
         hold on
         
         % actual state
-            plot(T, Q(:,1), 'DisplayName', '$q_1$',...
+            plot(T, Q(1,:), 'DisplayName', '$q_1$',...
                             'LineStyle', '-', 'Color', colors(1,:))
-            plot(T, Q(:,2), 'DisplayName', '$q_2$',...
+            plot(T, Q(2,:), 'DisplayName', '$q_2$',...
                             'LineStyle', '-', 'Color', colors(2,:))
-            plot(T, Q(:,3), 'DisplayName', '$q_3$',...
+            plot(T, Q(3,:), 'DisplayName', '$q_3$',...
                             'LineStyle', '-', 'Color', colors(3,:))
 
         % desired state
-            plot(T, Do(:,1), 'DisplayName', '$q_{1,desired}$',...
+            plot(T, Do(1,:), 'DisplayName', '$q_{1,desired}$',...
                              'LineStyle', ':', 'Color', colors(1,:))
-            plot(T, Do(:,2), 'DisplayName', '$q_{2,desired}$',...
+            plot(T, Do(2,:), 'DisplayName', '$q_{2,desired}$',...
                              'LineStyle', ':', 'Color', colors(2,:))
-            plot(T, Do(:,3), 'DisplayName', '$q_{3,desired}$',...
+            plot(T, Do(3,:), 'DisplayName', '$q_{3,desired}$',...
                              'LineStyle', ':', 'Color', colors(3,:))
 
         hold off
@@ -88,9 +88,9 @@ end
 
         subplot(2,2,3)
         hold on
-            plot(T, DQ(:,1), 'DisplayName', '$\dot{q}_1$')
-            plot(T, DQ(:,2), 'DisplayName', '$\dot{q}_2$')
-            plot(T, DQ(:,3), 'DisplayName', '$\dot{q}_3$')
+            plot(T, DQ(1,:), 'DisplayName', '$\dot{q}_1$')
+            plot(T, DQ(2,:), 'DisplayName', '$\dot{q}_2$')
+            plot(T, DQ(3,:), 'DisplayName', '$\dot{q}_3$')
         hold off
         title('Joint angles derrivatives')
         xlabel('Time [s]')

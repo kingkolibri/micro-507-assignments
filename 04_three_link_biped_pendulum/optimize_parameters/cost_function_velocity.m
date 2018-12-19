@@ -5,7 +5,7 @@ function [J] = cost_function_velocity(T, theta_swing, theta_torso)
     global gT
     global gTheta_swing
     global gTheta_torso
-    global gVelocity
+    global gDesiredVelocity
     
     gT = T;
     gTheta_swing = theta_swing;
@@ -44,7 +44,7 @@ function [J] = cost_function_velocity(T, theta_swing, theta_torso)
     end
 
     % normalize by time to discourage immedeate falls, standing
-    J =  abs( (r0(1)/T(end)) - gVelocity);
+    J =  abs( (r0(1)/T(end)) - gDesiredVelocity);
 
 end
 

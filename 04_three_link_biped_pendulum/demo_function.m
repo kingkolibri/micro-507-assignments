@@ -21,10 +21,18 @@ global gKp2
 global gReference_curve
 global gDesiredVelocity
 
-gKd1 = 664.3467;
-gKp1 = 3.7122;
-gKd2 = 5.007;
-gKp2 = 149.2581;
+gKd1 = 73.4387;
+gKp1 = 4046.276483264287;
+gKd2 = 0;
+gKp2 = 0;
+
+global gT
+global gTheta_swing
+global gTheta_torso
+
+gT = 0.4;
+gTheta_swing = -pi/16;
+gTheta_torso = pi/64;
 
 reference_curve = load('./control/reference_curve.mat');
 gReference_curve = reference_curve.curve;

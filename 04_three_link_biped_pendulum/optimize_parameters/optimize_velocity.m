@@ -40,7 +40,7 @@ fun = @(x) cost_function_velocity(x(1), x(2), x(3));
 % Run optimizer
 options = optimset('PlotFcns',@optimplotfval);
 
-disp(gVelocity)
+disp(gDesiredVelocity)
 
 x = fminsearch( fun,...
                 x0,...

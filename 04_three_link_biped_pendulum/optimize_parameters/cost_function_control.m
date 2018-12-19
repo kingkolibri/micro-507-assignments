@@ -22,7 +22,7 @@ function [J] = cost_function_control(Kd1, Kp1, Kd2, Kp2)
     %% Run simulation
     q0 = [0;0;0]; 
     dq0 = [0;0;0]; %inital q0 and dq0 value
-    num_steps = 5; %inital num_steps value
+    num_steps = 15; %inital num_steps value
     
     sln = solve_eqns(q0, dq0, num_steps);
     
