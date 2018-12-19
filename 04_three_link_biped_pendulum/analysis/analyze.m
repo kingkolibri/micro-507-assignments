@@ -7,6 +7,7 @@ r0 = [0; 0];
 T = [];
 Q = [];
 DQ= [];
+x_swf_total=[];
 control_error = 0;
 i = 0;
 
@@ -44,6 +45,7 @@ for j = 1:num_steps
         
     end
     [x_swf, ~, ~, ~] = kin_swf(q);
+    x_swf_total=[x_swf_total,x_swf];
     r0 = r0 + [x_swf; 0];
 end
 	
@@ -138,4 +140,7 @@ figure('name', 'Horizontal hip position')
             title('Hip position in space')
             xlabel('Time [s]')
             ylabel('x position [m]')
+% Plot CoT
+[cot]=COT(num_steps,DQ(:,1),DQ(:,2),DQ(:,3),U(:,1),U(:,2),x_swf_total,Hip(:,1));
+	    
 end
